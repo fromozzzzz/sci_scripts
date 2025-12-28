@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球四季形成原理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #3498db;
+            font-size: 2em;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 15px 0;
+            text-align: justify;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #3498db;
+        }
+
+        .key-factors {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .factor-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .factor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .factor-card h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .seasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .season-card {
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .season-card:hover {
+            transform: scale(1.05);
+        }
+
+        .spring {
+            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+            color: white;
+        }
+
+        .summer {
+            background: linear-gradient(135deg, #f46b45 0%, #eea849 100%);
+            color: white;
+        }
+
+        .autumn {
+            background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+            color: white;
+        }
+
+        .winter {
+            background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+            color: white;
+        }
+
+        .season-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .illustration {
+            background: linear-gradient(135deg, #ffeaa7 0%, #dfe6e9 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .illustration svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .myth-buster {
+            background: #ffebee;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 30px 0;
+            border-left: 5px solid #e74c3c;
+        }
+
+        .myth-buster h3 {
+            color: #c0392b;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            .key-factors,
+            .seasons-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌍 地球四季形成原理</h1>
+            <p class="subtitle">探索地球公转与倾斜如何造就春夏秋冬的循环往复</p>
+        </header>
+
+        <div class="main-content">
+            <h2>什么是四季？</h2>
+            <div class="highlight">
+                <p><strong>四季</strong>是地球上由于气候和日照变化而划分的四个季节：春、夏、秋、冬。这种周期性的变化主要源于地球绕太阳公转过程中的天文特征。</p>
+            </div>
+
+            <h2>四季形成的两大关键因素</h2>
+            <div class="key-factors">
+                <div class="factor-card">
+                    <h3>🌐 地球轴倾斜</h3>
+                    <p>地球的自转轴相对于公转轨道面倾斜约<strong>23.5度</strong>。这个倾斜角度在地球绕太阳公转的一年中保持不变，但导致太阳直射点在南北回归线之间移动。</p>
+                </div>
+                <div class="factor-card">
+                    <h3>🔄 地球公转</h3>
+                    <p>地球绕太阳公转一周需要约<strong>365.25天</strong>（一年）。在公转过程中，由于地球轴倾斜，不同半球在不同时期接收到的太阳辐射量发生变化。</p>
+                </div>
+            </div>
+
+            <h2>四季的详细解释</h2>
+            <div class="seasons-grid">
+                <div class="season-card spring">
+                    <h3>🌸 春季</h3>
+                    <p><strong>北半球：3-5月</strong></p>
+                    <p>太阳直射点从赤道向北移动，日照时间逐渐增长，气温回升，万物复苏</p>
+                </div>
+                <div class="season-card summer">
+                    <h3>☀️ 夏季</h3>
+                    <p><strong>北半球：6-8月</strong></p>
+                    <p>太阳直射北半球，日照时间最长，接收太阳辐射最多，气温最高</p>
+                </div>
+                <div class="season-card autumn">
+                    <h3>🍂 秋季</h3>
+                    <p><strong>北半球：9-11月</strong></p>
+                    <p>太阳直射点从赤道向南移动，日照时间缩短，气温逐渐下降，收获季节</p>
+                </div>
+                <div class="season-card winter">
+                    <h3>❄️ 冬季</h3>
+                    <p><strong>北半球：12-2月</strong></p>
+                    <p>太阳直射南半球，北半球日照时间最短，接收太阳辐射最少，气温最低</p>
+                </div>
+            </div>
+
+            <h2>四季形成原理图解</h2>
+            <div class="illustration">
+                <svg width="600" height="400" viewBox="0 0 600 400">
+                    <!-- 太阳 -->
+                    <circle cx="300" cy="200" r="40" fill="#FFD700" stroke="#FFA500" stroke-width="3"/>
+                    <text x="300" y="205" text-anchor="middle" font-size="14" fill="#333">太阳</text>
+
+                    <!-- 地球轨道 -->
+                    <ellipse cx="300" cy="200" rx="220" ry="140" fill="none" stroke="#666" stroke-width="2" stroke-dasharray="10,5"/>
+
+                    <!-- 春分位置 -->
+                    <circle cx="520" cy="200" r="20" fill="#4CAF50"/>
+                    <text x="520" y="235" text-anchor="middle" font-size="12" fill="#333">春分</text>
+                    <line x1="520" y1="180" x2="520" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+                    <line x1="500" y1="200" x2="540" y2="200" stroke="#333" stroke-width="2"/>
+
+                    <!-- 夏至位置 -->
+                    <circle cx="300" cy="60" r="20" fill="#FF5722"/>
+                    <text x="300" y="40" text-anchor="middle" font-size="12" fill="#333">夏至</text>
+                    <line x1="300" y1="40" x2="300" y2="0" stroke="#FF5722" stroke-width="3"/>
+
+                    <!-- 秋分位置 -->
+                    <circle cx="80" cy="200" r="20" fill="#FF9800"/>
+                    <text x="80" y="235" text-anchor="middle" font-size="12" fill="#333">秋分</text>
+                    <line x1="80" y1="180" x2="80" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="5,3"/>
+                    <line x1="60" y1="200" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+
+                    <!-- 冬至位置 -->
+                    <circle cx="300" cy="340" r="20" fill="#2196F3"/>
+                    <text x="300" y="380" text-anchor="middle" font-size="12" fill="#333">冬至</text>
+                    <line x1="300" y1="360" x2="300" y2="400" stroke="#2196F3" stroke-width="3"/>
+
+                    <!-- 箭头表示公转方向 -->
+                    <path d="M 400 130 Q 380 100 350 70" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrowhead)"/>
+                    <defs>
+                        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                            <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                        </marker>
+                    </defs>
+                </svg>
+                <p><em>图示：地球绕太阳公转，倾斜轴指向保持不变，导致四季更替</em></p>
+            </div>
+
+            <h2>常见误解澄清</h2>
+            <div class="myth-buster">
+                <h3>❌ 误解：四季变化是因为地球离太阳远近不同</h3>
+                <p><strong>✅ 正确理解：</strong>四季的形成主要不是因为地球与太阳的距离变化。实际上，地球在近日点（1月初）时北半球是冬季，在远日点（7月初）时北半球是夏季。四季变化的核心原因是<strong>地球轴倾斜</strong>导致不同半球接收到的太阳辐射量不同。</p>
+            </div>
+
+            <h2>南北半球季节相反</h2>
+            <p>由于地球轴倾斜，当北半球倾向太阳时（北半球夏季），南半球则背离太阳（南半球冬季）。因此：</p>
+            <ul>
+                <li><strong>北半球夏季</strong> = <strong>南半球冬季</strong></li>
+                <li><strong>北半球冬季</strong> = <strong>南半球夏季</strong></li>
+                <li><strong>赤道附近</strong>地区全年气温变化较小，没有明显的四季划分</li>
+                <li><strong>极地地区</strong>则会有极昼和极夜现象</li>
+            </ul>
+
+            <h2>总结</h2>
+            <div class="highlight">
+                <p><strong>地球四季的形成是地球公转和轴倾斜共同作用的结果：</strong></p>
+                <ul>
+                    <li>🌍 地球轴倾斜约23.5度</li>
+                    <li>🔄 地球绕太阳公转一周形成一年</li>
+                    <li>☀️ 太阳直射点在南北回归线之间移动</li>
+                    <li>🌡️ 不同半球在不同时期接收的太阳辐射量变化</li>
+                    <li>🌸 形成春、夏、秋、冬的周期性变化</li>
+                </ul>
+            </div>
+        </div>
+
+        <footer>
+            <p>🌍 了解自然，探索科学 | 地球四季形成原理科普页面</p>
+            <p>© 2025 科学教育系列</p>
+        </footer>
+    </div>
+</body>
+</html>
