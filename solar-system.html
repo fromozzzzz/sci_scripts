@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太阳系构造介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+            background: linear-gradient(to bottom, #0a0a2e 0%, #1a1a4e 100%);
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: radial-gradient(circle, #1a1a4e 0%, #0a0a2e 100%);
+            border-bottom: 2px solid #ffd700;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: #b0b0ff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section h2 {
+            color: #ffd700;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .sun {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .sun-icon {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ffdd00 0%, #ff9500 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+            flex-shrink: 0;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 60px rgba(255, 215, 0, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 80px rgba(255, 215, 0, 1);
+            }
+        }
+
+        .planets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .planet {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .planet:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .planet-name {
+            font-size: 1.5em;
+            color: #ffd700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .planet-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .planet-data {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #c0c0ff;
+        }
+
+        .planet-data strong {
+            color: #fff;
+        }
+
+        .belt {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #ffd700;
+        }
+
+        .belt h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+
+        .facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .fact {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .fact h4 {
+            color: #ffd700;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 40px;
+        }
+
+        .orbit-system {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle, #1a1a4e 0%, #0a0a2e 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .sun-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #ffdd00 0%, #ff9500 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+        }
+
+        .orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .orbit-1 { width: 100px; height: 100px; }
+        .orbit-2 { width: 140px; height: 140px; }
+        .orbit-3 { width: 180px; height: 180px; }
+        .orbit-4 { width: 220px; height: 220px; }
+        .orbit-5 { width: 280px; height: 280px; }
+        .orbit-6 { width: 330px; height: 330px; }
+        .orbit-7 { width: 370px; height: 370px; }
+        .orbit-8 { width: 400px; height: 400px; }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .sun {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .orbit-system {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌌 太阳系构造介绍 🌌</h1>
+        <p>探索我们宇宙家园的奥秘</p>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>太阳系概述</h2>
+            <p>太阳系是以太阳为中心，由八大行星、矮行星、小行星、彗星和其他天体组成的引力系统。太阳系位于银河系的一条旋臂上，距离银河系中心约2.6万光年。太阳系的形成可以追溯到约46亿年前，由一个巨大的分子云引力坍缩而成。</p>
+        </div>
+
+        <div class="section">
+            <h2>☀️ 太阳</h2>
+            <div class="sun">
+                <div class="sun-icon"></div>
+                <div>
+                    <p><strong>太阳</strong>是太阳系的中心恒星，占太阳系总质量的99.86%。它是一个主要由氢和氦组成的等离子体球，通过核聚变反应产生能量。</p>
+                    <div class="planet-data">
+                        <p><strong>直径：</strong>约139万公里（地球的109倍）</p>
+                        <p><strong>表面温度：</strong>约5500°C</p>
+                        <p><strong>核心温度：</strong>约1500万°C</p>
+                        <p><strong>年龄：</strong>约46亿年</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>行星轨道示意</h2>
+            <div class="orbit-system">
+                <div class="sun-center"></div>
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-3"></div>
+                <div class="orbit orbit-4"></div>
+                <div class="orbit orbit-5"></div>
+                <div class="orbit orbit-6"></div>
+                <div class="orbit orbit-7"></div>
+                <div class="orbit orbit-8"></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>内太阳系行星（类地行星）</h2>
+            <p>内太阳系由四颗岩石行星组成，它们相对较小，密度较高，表面为固体。</p>
+
+            <div class="planets">
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #8c7853 0%, #a89f91 100%);"></span>
+                        水星 Mercury
+                    </div>
+                    <p>距离太阳最近的行星，表面布满陨石坑，昼夜温差极大。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>88地球日</p>
+                        <p><strong>直径：</strong>4,879公里</p>
+                        <p><strong>卫星数：</strong>0</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #e6c87a 0%, #c79b3b 100%);"></span>
+                        金星 Venus
+                    </div>
+                    <p>地球的"姐妹星"，拥有浓厚的大气层，表面温度极高。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>225地球日</p>
+                        <p><strong>直径：</strong>12,104公里</p>
+                        <p><strong>卫星数：</strong>0</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #4a90d9 0%, #2d5a87 50%, #1e7a46 100%);"></span>
+                        地球 Earth
+                    </div>
+                    <p>我们的家园，目前已知唯一存在生命的行星。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>365.25地球日</p>
+                        <p><strong>直径：</strong>12,742公里</p>
+                        <p><strong>卫星数：</strong>1（月球）</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #cd5c5c 0%, #8b4513 100%);"></span>
+                        火星 Mars
+                    </div>
+                    <p>"红色星球"，拥有太阳系最高的火山奥林帕斯山。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>687地球日</p>
+                        <p><strong>直径：</strong>6,779公里</p>
+                        <p><strong>卫星数：</strong>2</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="belt">
+            <h3>🪨 小行星带</h3>
+            <p>位于火星和木星之间的小行星带，包含数百万颗不规则形状的小天体。最大的小行星是谷神星（Ceres），现已归类为矮行星。这些小行星是太阳系形成初期的残留物质。</p>
+        </div>
+
+        <div class="section">
+            <h2>外太阳系行星（类木行星）</h2>
+            <p>外太阳系由四颗巨大的气态行星组成，它们体积庞大，主要由氢和氦组成。</p>
+
+            <div class="planets">
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #d4a574 0%, #c88b3a 50%, #9e7d52 100%);"></span>
+                        木星 Jupiter
+                    </div>
+                    <p>太阳系最大的行星，著名的大红斑是持续了数百年的风暴。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>11.86地球年</p>
+                        <p><strong>直径：</strong>139,820公里</p>
+                        <p><strong>卫星数：</strong>95</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #ead6b8 0%, #c4a46b 100%);"></span>
+                        土星 Saturn
+                    </div>
+                    <p>以壮观的环系统闻名，主要由冰粒和岩石碎片组成。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>29.46地球年</p>
+                        <p><strong>直径：</strong>116,460公里</p>
+                        <p><strong>卫星数：</strong>146</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #a8e6cf 0%, #7ec8a3 100%);"></span>
+                        天王星 Uranus
+                    </div>
+                    <p>"躺着旋转"的行星，自转轴倾斜角度达98度。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>84.01地球年</p>
+                        <p><strong>直径：</strong>50,724公里</p>
+                        <p><strong>卫星数：</strong>28</p>
+                    </div>
+                </div>
+
+                <div class="planet">
+                    <div class="planet-name">
+                        <span class="planet-icon" style="background: linear-gradient(135deg, #4169e1 0%, #1e3a8a 100%);"></span>
+                        海王星 Neptune
+                    </div>
+                    <p>太阳系最远的行星，拥有太阳系最强烈的风暴。</p>
+                    <div class="planet-data">
+                        <p><strong>公转周期：</strong>164.8地球年</p>
+                        <p><strong>直径：</strong>49,244公里</p>
+                        <p><strong>卫星数：</strong>16</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="belt">
+            <h3>❄️ 柯伊伯带</h3>
+            <p>位于海王星轨道之外的柯伊伯带，是太阳系外围的环状区域，包含大量冰质小天体。冥王星是柯伊伯带中最著名的天体之一。这里被认为是短周期彗星的发源地。</p>
+        </div>
+
+        <div class="section">
+            <h2>🔭 矮行星</h2>
+            <p>矮行星是围绕太阳运行的天体，质量足以使自身呈球形，但未能清除其轨道附近的其他天体。</p>
+            <div class="facts">
+                <div class="fact">
+                    <h4>冥王星 Pluto</h4>
+                    <p>曾被认为是第九大行星，2006年被重新归类为矮行星。直径约2,377公里，有5颗已知卫星。</p>
+                </div>
+                <div class="fact">
+                    <h4>谷神星 Ceres</h4>
+                    <p>位于小行星带中，是最大的小行星，也是唯一的矮行星。直径约940公里。</p>
+                </div>
+                <div class="fact">
+                    <h4>阋神星 Eris</h4>
+                    <p>柯伊伯带中最著名的矮行星之一，质量几乎与冥王星相当。直径约2,326公里。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 太阳系关键数据</h2>
+            <div class="facts">
+                <div class="fact">
+                    <h4>太阳系直径</h4>
+                    <p>约287.46亿公里（约2光年，包括奥尔特云）</p>
+                </div>
+                <div class="fact">
+                    <h4>行星总数</h4>
+                    <p>8颗行星（4颗类地行星 + 4颗类木行星）</p>
+                </div>
+                <div class="fact">
+                    <h4>已知卫星总数</h4>
+                    <p>超过290颗（数量持续增加中）</p>
+                </div>
+                <div class="fact">
+                    <h4>轨道速度</h4>
+                    <p>太阳系绕银河系中心运行速度约220公里/秒</p>
+                </div>
+                <div class="fact">
+                    <h4>银河系公转周期</h4>
+                    <p>约2.25-2.5亿年（宇宙年）</p>
+                </div>
+                <div class="fact">
+                    <h4>年龄</h4>
+                    <p>约46亿年</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🌟 有趣的太阳系事实</h2>
+            <div class="facts">
+                <div class="fact">
+                    <h4>最冷的地方</h4>
+                    <p>并不是冥王星，而是月球！月球的某些陨石坑温度可降至-238°C。</p>
+                </div>
+                <div class="fact">
+                    <h4>最大的火山</h4>
+                    <p>火星的奥林帕斯山是太阳系最高的火山，高约21.9公里。</p>
+                </div>
+                <div class="fact">
+                    <h4>最长的峡谷</h4>
+                    <p>火星的水手号峡谷长约4,000公里，是美国大峡谷的10倍。</p>
+                </div>
+                <div class="fact">
+                    <h4>钻石雨</h4>
+                    <p>在海王星和天王星上，极端压力可能使碳原子形成钻石。</p>
+                </div>
+                <div class="fact">
+                    <h4>快速自转</h4>
+                    <p>木星自转最快，一天只有约10小时。</p>
+                </div>
+                <div class="fact">
+                    <h4>大气层厚度</h4>
+                    <p>虽然金星和地球大小相似，但金星的大气压是地球的92倍。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>🌌 探索宇宙，了解我们的家园 🌌</p>
+        <p>太阳系构造介绍 | 科学教育网页</p>
+    </div>
+</body>
+</html>
