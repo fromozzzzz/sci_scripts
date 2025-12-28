@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月食形成原理 - 3D互动模拟</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>🌙 月食形成原理 🌍</h1>
+            <p class="subtitle">探索太阳、地球和月亮的奇妙舞蹈</p>
+        </header>
+
+        <div id="main-content">
+            <canvas id="renderCanvas"></canvas>
+
+            <div id="control-panel">
+                <div class="info-box">
+                    <h2>🎮 控制面板</h2>
+
+                    <div class="control-group">
+                        <button id="playBtn" class="btn btn-primary">▶️ 开始演示</button>
+                        <button id="pauseBtn" class="btn btn-secondary">⏸️ 暂停</button>
+                        <button id="resetBtn" class="btn btn-warning">🔄 重置</button>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="speedSlider">⚡ 速度控制：</label>
+                        <input type="range" id="speedSlider" min="0.5" max="5" step="0.5" value="1">
+                        <span id="speedValue">1x</span>
+                    </div>
+
+                    <div class="control-group">
+                        <button id="viewBtn" class="btn btn-info">👁️ 切换视角</button>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h2>📚 知识小课堂</h2>
+                    <div id="infoText">
+                        <p><strong>什么是月食？</strong></p>
+                        <p>当太阳、地球和月亮排成一条直线时，地球挡住了太阳照向月亮的光，月亮就会变暗，这就是月食！</p>
+                        <p><strong>月食的类型：</strong></p>
+                        <ul>
+                            <li>🌑 <strong>月全食</strong>：月亮完全进入地球的影子</li>
+                            <li>🌘 <strong>月偏食</strong>：月亮部分进入地球的影子</li>
+                            <li>🌕 <strong>半影月食</strong>：月亮进入地球的半影区</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box phase-indicator">
+                    <h2>🌙 当前阶段</h2>
+                    <div id="phaseText" class="phase-text">准备开始</div>
+                    <div id="phaseProgress" class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>💡 提示：拖动鼠标可以旋转视角，滚动鼠标可以缩放</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
