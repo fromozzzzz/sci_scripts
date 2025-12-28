@@ -202,14 +202,8 @@ function createScene() {
 // 创建星空背景
 function createStarfield(scene) {
     const starCount = 2000;
-    const stars = new BABYLON.PointsCloud(
-        'stars',
-        { count: starCount, updatable: false },
-        scene
-    );
-
-    const positions = new Float32Array(starCount * 3);
-    const colors = new Float32Array(starCount * 3);
+    const positions = [];
+    const colors = [];
 
     for (let i = 0; i < starCount; i++) {
         // 随机位置
@@ -217,30 +211,30 @@ function createStarfield(scene) {
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.random() * Math.PI;
 
-        positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-        positions[i * 3 + 1] = radius * Math.cos(phi);
-        positions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+        const x = radius * Math.sin(phi) * Math.cos(theta);
+        const y = radius * Math.cos(phi);
+        const z = radius * Math.sin(phi) * Math.sin(theta);
+
+        positions.push(new BABYLON.Vector3(x, y, z));
 
         // 随机颜色（白色、黄色、淡蓝色）
         const colorChoice = Math.random();
         if (colorChoice < 0.6) {
-            colors[i * 3] = 1;
-            colors[i * 3 + 1] = 1;
-            colors[i * 3 + 2] = 1;
+            colors.push(new BABYLON.Color4(1, 1, 1, 1));
         } else if (colorChoice < 0.8) {
-            colors[i * 3] = 1;
-            colors[i * 3 + 1] = 0.95;
-            colors[i * 3 + 2] = 0.7;
+            colors.push(new BABYLON.Color4(1, 0.95, 0.7, 1));
         } else {
-            colors[i * 3] = 0.7;
-            colors[i * 3 + 1] = 0.8;
-            colors[i * 3 + 2] = 1;
+            colors.push(new BABYLON.Color4(0.7, 0.8, 1, 1));
         }
     }
 
-    stars.positions = positions;
-    stars.colors = colors;
-    stars.pointSize = 1.5;
+    // 使用 PointsCloudSystem 创建星空
+    const pcs = new BABYLON.PointsCloudSystem('stars', 2, scene);
+    pcs.addPoints(starCount, (particle, i) => {
+        particle.position = positions[i];
+        particle.color = colors[i];
+    });
+    pcs.buildMeshAsync();
 }
 
 // 创建行星
