@@ -201,40 +201,56 @@ function createScene() {
 
 // 创建星空背景
 function createStarfield(scene) {
-    const starCount = 2000;
-    const positions = [];
-    const colors = [];
+    const starCount = 1000;
 
-    for (let i = 0; i < starCount; i++) {
-        // 随机位置
-        const radius = 150 + Math.random() * 100;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.random() * Math.PI;
+    // 创建星星材质
+    const starMaterial = new BABYLON.StandardMaterial('starMaterial', scene);
+    starMaterial.emissiveColor = new BABYLON.Color3(1, 1, 1);
+    starMaterial.disableLighting = true;
 
-        const x = radius * Math.sin(phi) * Math.cos(theta);
-        const y = radius * Math.cos(phi);
-        const z = radius * Math.sin(phi) * Math.sin(theta);
+    // 使用 SPS (Solid Particle System) 创建星空
+    const sps = new BABYLON.SolidParticleSystem('stars', scene);
+    const sphere = BABYLON.MeshBuilder.CreateSphere('s', { diameter: 0.5, segments: 4 }, scene);
+    sps.addShape(sphere, starCount);
+    sphere.dispose();
 
-        positions.push(new BABYLON.Vector3(x, y, z));
+    const starMesh = sps.buildMesh();
+    starMesh.material = starMaterial;
 
-        // 随机颜色（白色、黄色、淡蓝色）
-        const colorChoice = Math.random();
-        if (colorChoice < 0.6) {
-            colors.push(new BABYLON.Color4(1, 1, 1, 1));
-        } else if (colorChoice < 0.8) {
-            colors.push(new BABYLON.Color4(1, 0.95, 0.7, 1));
-        } else {
-            colors.push(new BABYLON.Color4(0.7, 0.8, 1, 1));
+    // 初始化星星位置和颜色
+    sps.initParticles = () => {
+        for (let i = 0; i < sps.nbParticles; i++) {
+            const particle = sps.particles[i];
+
+            // 随机位置
+            const radius = 150 + Math.random() * 100;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.random() * Math.PI;
+
+            particle.position.x = radius * Math.sin(phi) * Math.cos(theta);
+            particle.position.y = radius * Math.cos(phi);
+            particle.position.z = radius * Math.sin(phi) * Math.sin(theta);
+
+            // 随机大小
+            const scale = 0.3 + Math.random() * 0.7;
+            particle.scaling.x = scale;
+            particle.scaling.y = scale;
+            particle.scaling.z = scale;
+
+            // 随机颜色（白色、黄色、淡蓝色）
+            const colorChoice = Math.random();
+            if (colorChoice < 0.6) {
+                particle.color = new BABYLON.Color4(1, 1, 1, 1);
+            } else if (colorChoice < 0.8) {
+                particle.color = new BABYLON.Color4(1, 0.95, 0.7, 1);
+            } else {
+                particle.color = new BABYLON.Color4(0.7, 0.8, 1, 1);
+            }
         }
-    }
+    };
 
-    // 使用 PointsCloudSystem 创建星空
-    const pcs = new BABYLON.PointsCloudSystem('stars', 2, scene);
-    pcs.addPoints(starCount, (particle, i) => {
-        particle.position = positions[i];
-        particle.color = colors[i];
-    });
-    pcs.buildMeshAsync();
+    sps.initParticles();
+    sps.setParticles();
 }
 
 // 创建行星
