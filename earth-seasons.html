@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球四季形成原理 - 3D互动模拟</title>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <link rel="stylesheet" href="earth-seasons.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>🌍 地球四季形成原理</h1>
+            <p>小朋友们，让我们一起探索地球四季是如何形成的吧！</p>
+        </div>
+
+        <canvas id="renderCanvas"></canvas>
+
+        <div id="controls">
+            <div class="control-group">
+                <h3>🎮 控制面板</h3>
+                <button id="playBtn" class="btn btn-primary">▶️ 开始运动</button>
+                <button id="pauseBtn" class="btn btn-secondary">⏸️ 暂停</button>
+                <button id="resetBtn" class="btn btn-warning">🔄 重置</button>
+            </div>
+
+            <div class="control-group">
+                <h3>⚡ 速度控制</h3>
+                <label>运动速度：<span id="speedValue">1.0</span>x</label>
+                <input type="range" id="speedSlider" min="0.1" max="3" step="0.1" value="1">
+            </div>
+
+            <div class="control-group">
+                <h3>🔍 视角切换</h3>
+                <button id="viewTop" class="btn btn-view">俯视图</button>
+                <button id="viewSide" class="btn btn-view">侧视图</button>
+                <button id="viewFree" class="btn btn-view">自由视角</button>
+            </div>
+        </div>
+
+        <div id="info">
+            <div id="seasonInfo">
+                <h3>当前季节：<span id="currentSeason">春分</span></h3>
+                <p id="seasonDesc">太阳直射赤道，昼夜平分</p>
+            </div>
+
+            <div id="knowledge">
+                <h3>💡 知识点</h3>
+                <ul>
+                    <li>🌐 地球绕太阳公转一周需要365天</li>
+                    <li>📐 地球自转轴倾斜23.5度</li>
+                    <li>☀️ 地轴倾斜导致阳光照射角度变化</li>
+                    <li>🌡️ 照射角度不同形成四季变化</li>
+                    <li>🔄 北半球和南半球季节相反</li>
+                </ul>
+            </div>
+
+            <div id="legend">
+                <h3>🎨 图例说明</h3>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #FDB813;"></span>
+                    <span>太阳（光源）</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #4169E1;"></span>
+                    <span>地球（倾斜23.5°）</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box" style="background: rgba(255,255,255,0.2);"></span>
+                    <span>地球轨道</span>
+                </div>
+                <div class="legend-item">
+                    <span class="color-box" style="background: #FF0000;"></span>
+                    <span>地轴（红色箭头）</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="earth-seasons.js"></script>
+</body>
+</html>
