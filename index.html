@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>探索太阳系 - 小学生3D互动教学</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <div id="info-panel">
+        <h1>🌟 探索太阳系 🌟</h1>
+        <div id="planet-info">
+            <h2 id="planet-name">太阳系</h2>
+            <p id="planet-description">点击任意行星了解它的秘密！</p>
+            <ul id="planet-facts"></ul>
+        </div>
+        <div id="controls">
+            <button id="pause-btn" onclick="toggleOrbit()">⏸️ 暂停公转</button>
+            <button onclick="resetCamera()">🔄 重置视角</button>
+            <button onclick="toggleSpeed()">⚡ 加速/减速</button>
+            <button onclick="showOrbits()">🔘 显示轨道</button>
+        </div>
+    </div>
+
+    <canvas id="renderCanvas"></canvas>
+
+    <script src="solar-system.js"></script>
+</body>
+</html>
