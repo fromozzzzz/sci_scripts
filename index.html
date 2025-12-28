@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球四季形成原理 - 3D互动模拟</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>🌍 地球四季形成原理</h1>
+            <p class="subtitle">探索地球围绕太阳公转时四季的变化</p>
+        </div>
+
+        <canvas id="renderCanvas"></canvas>
+
+        <div id="controls">
+            <div class="control-group">
+                <h3>🎮 控制面板</h3>
+                <button id="playBtn" class="btn btn-primary">▶️ 播放动画</button>
+                <button id="pauseBtn" class="btn btn-secondary">⏸️ 暂停</button>
+                <button id="resetBtn" class="btn btn-secondary">🔄 重置</button>
+            </div>
+
+            <div class="control-group">
+                <h3>🌏 选择季节</h3>
+                <button class="season-btn" data-season="spring">🌸 春分 (3月)</button>
+                <button class="season-btn" data-season="summer">☀️ 夏至 (6月)</button>
+                <button class="season-btn" data-season="autumn">🍂 秋分 (9月)</button>
+                <button class="season-btn" data-season="winter">❄️ 冬至 (12月)</button>
+            </div>
+
+            <div class="control-group">
+                <label for="speedSlider">⚡ 动画速度:</label>
+                <input type="range" id="speedSlider" min="0.5" max="3" step="0.5" value="1">
+                <span id="speedValue">1x</span>
+            </div>
+        </div>
+
+        <div id="info-panel">
+            <h3 id="seasonTitle">🌸 春分 (3月21日)</h3>
+            <div id="seasonInfo">
+                <p><strong>太阳直射点：</strong>赤道</p>
+                <p><strong>北半球：</strong>春季开始，白天和黑夜一样长</p>
+                <p><strong>南半球：</strong>秋季开始，白天和黑夜一样长</p>
+                <p><strong>特点：</strong>全球昼夜平分，气温适中</p>
+            </div>
+        </div>
+
+        <div id="knowledge-box">
+            <h3>💡 知识点</h3>
+            <ul>
+                <li>🌍 地球的自转轴倾斜约23.5度</li>
+                <li>🔄 地球绕太阳公转一周需要365天</li>
+                <li>☀️ 地轴倾斜导致太阳光照射角度变化</li>
+                <li>🌡️ 光照角度不同，接收热量不同，形成四季</li>
+                <li>🌏 北半球和南半球的季节相反</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
