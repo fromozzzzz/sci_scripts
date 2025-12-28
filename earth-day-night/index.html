@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地球昼夜形成原理 - 3D互动模拟</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <h1>🌍 地球的昼夜是怎么形成的？</h1>
+            <p class="subtitle">拖动地球和太阳，观察昼夜变化！</p>
+        </div>
+
+        <div id="canvas-container">
+            <canvas id="renderCanvas"></canvas>
+        </div>
+
+        <div id="control-panel">
+            <div class="control-group">
+                <h3>🎮 控制面板</h3>
+                <button id="playPauseBtn" class="btn-primary">▶️ 开始旋转</button>
+                <button id="resetBtn" class="btn-secondary">🔄 重置</button>
+            </div>
+
+            <div class="control-group">
+                <label>旋转速度：<span id="speedValue">1x</span></label>
+                <input type="range" id="speedSlider" min="0" max="5" step="0.5" value="1">
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showOrbitBtn" checked>
+                    显示地球轨道
+                </label>
+            </div>
+
+            <div class="control-group">
+                <label>
+                    <input type="checkbox" id="showAxisBtn" checked>
+                    显示地轴
+                </label>
+            </div>
+        </div>
+
+        <div id="info-panel">
+            <h3>📚 小知识</h3>
+            <div id="infoContent">
+                <p><strong>为什么会有白天和黑夜？</strong></p>
+                <ul>
+                    <li>🌍 地球就像一个大圆球，一直在自转（像陀螺一样旋转）</li>
+                    <li>☀️ 太阳发出光芒，照亮地球的一半</li>
+                    <li>🌞 被太阳照到的一面是白天</li>
+                    <li>🌙 背对太阳的一面是黑夜</li>
+                    <li>⏰ 地球转一圈大约需要24小时，这就是一天</li>
+                    <li>🔄 地球不停地转，所以白天和黑夜一直在交替</li>
+                </ul>
+            </div>
+
+            <div id="locationInfo" class="location-box">
+                <h4>🏠 观察点信息</h4>
+                <p id="timeInfo">当前时间：正午</p>
+                <p id="sunlightInfo">光照情况：白天</p>
+            </div>
+        </div>
+
+        <div id="instructions">
+            <h4>💡 操作提示</h4>
+            <ul>
+                <li>🖱️ 鼠标左键拖动：旋转视角</li>
+                <li>🔍 鼠标滚轮：缩放</li>
+                <li>👆 点击地球：标记观察点</li>
+                <li>▶️ 点击"开始旋转"看昼夜变化</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
