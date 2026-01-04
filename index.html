@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太阳系3D互动模拟 - 小学生科学教育</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+</head>
+<body>
+    <div id="info-panel">
+        <h1>🌟 探索太阳系 🌟</h1>
+        <div id="planet-info">
+            <h2>欢迎来到太阳系！</h2>
+            <p>点击任意星球了解更多信息</p>
+            <p>使用鼠标拖动旋转视角，滚轮缩放</p>
+        </div>
+        <div id="controls">
+            <button id="playPause">⏸️ 暂停</button>
+            <button id="speedUp">⏩ 加速</button>
+            <button id="speedDown">⏪ 减速</button>
+            <button id="reset">🔄 重置</button>
+        </div>
+        <div id="speed-display">速度: 1x</div>
+    </div>
+
+    <canvas id="renderCanvas"></canvas>
+
+    <script src="solar-system.js"></script>
+</body>
+</html>
